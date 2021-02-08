@@ -1,7 +1,6 @@
 const express = require('express') //Requerimos Express
 const app = express() //Variable para utilizar lo que estamos requiriendo
-const port = 3000 //Habitualmente el 3000 para entornos locales
-//Cuando lo subamos a un servidor real, deberemos cambiarlo
+const port = process.env.PORT || 3000 //Hacemos uso de las variables de entorno
 
 //Motor de plantillas
 app.set('view engine', 'ejs')
