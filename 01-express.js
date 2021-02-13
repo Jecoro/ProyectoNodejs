@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 //Lo correcto será declararlas EN VARIABLES DE ENTORNO
 //para que nadie vea directamente nuestras credenciales
 const user = 'danielmuniz';
-const password = '4LPjRfUdYk3uP2cS';
-const dbname = 'pokemon';
+const password = '4qtpA2OIwvaI9SXy';
+const dbname = 'bdpokemon';
 const uri = `mongodb+srv://${user}:${password}@cluster0.vzezs.mongodb.net/${dbname}?retryWrites=true&w=majority`; //URL de conexión
 
 mongoose.connect(uri,
