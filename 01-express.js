@@ -1,16 +1,14 @@
 const express = require('express') //Requerimos Express
 const app = express() //Variable para utilizar lo que estamos requiriendo
+
+require('dotenv').config()
+
 const port = process.env.PORT || 3000 //Hacemos uso de las variables de entorno
 
 //Conexión a base de datos
 const mongoose = require('mongoose');
 //Variables que tendremos siempre:
-//Lo correcto será declararlas EN VARIABLES DE ENTORNO
-//para que nadie vea directamente nuestras credenciales
-const user = 'danielmuniz';
-const password = '4qtpA2OIwvaI9SXy';
-const dbname = 'bdpokemon';
-const uri = `mongodb+srv://${user}:${password}@cluster0.vzezs.mongodb.net/${dbname}?retryWrites=true&w=majority`; //URL de conexión
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.vzezs.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`; //URL de conexión
 
 mongoose.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true }
