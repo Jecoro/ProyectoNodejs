@@ -1,6 +1,8 @@
 <%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
 
     <div class="container">
+        <h1>CRUD Mongo</h1>
+        <a class="btn btn-success btn-block my-4" href="/pokemon/crear">Crear nuevo Pokemon</a>
         <!--Si existen elementos en el array de Pokemon-->
         <!--Aquí podremos mostrar todos los pokemon en una tabla-->
         <table class="table">
@@ -22,7 +24,9 @@
                             <td><%= pokemon.nombre %></td>
                             <td><%= pokemon.tipo %></td>
                             <td><%= pokemon.descripcion %></td>
-                            <td>Aciones</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="pokemon/<%= pokemon.id %>">Editar/Eliminar</a>
+                            </td>
                         </tr>
                     <% }) %>
                 <% } %>
