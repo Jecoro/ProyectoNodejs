@@ -1,0 +1,30 @@
+body {
+  
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(255, 255, 255);
+}
+
+main{
+  height: 100vh;
+}
+.jumbotron{
+  text-align: center;
+  background-image:url("../img/background.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: white;
+}
+a {
+  color: #00B7FF;
+}
+footer{
+  margin-top: 10vh;
+}
+.botonTitulo{background-color: blueviolet;border: 1px solid white;
+color: white;
+}
+.div1{
+  height: 50%;
+  width: 100%;
+  background-image: url("../img/FotoGaleria1.PNG");
+}

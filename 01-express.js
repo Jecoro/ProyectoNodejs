@@ -15,8 +15,7 @@ const port = process.env.PORT || 3000 //Hacemos uso de las variables de entorno
 //Conexión a base de datos
 const mongoose = require('mongoose');
 //Variables que tendremos siempre:
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.vzezs.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`; //URL de conexión
-
+const uri=`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.feme1.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 mongoose.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
@@ -32,7 +31,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Llamadas a las rutas:
 app.use('/', require('./router/rutas'));
-app.use('/pokemon', require('./router/pokemon'));
+app.use('/guias', require('./router/guias'));
 
 app.use((req, res) => {
   res.status(404).render("404", {

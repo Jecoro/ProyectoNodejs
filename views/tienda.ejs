@@ -1,0 +1,43 @@
+<%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
+
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
+        Compartimos tutoriales sobre:
+        <br>
+        <div class="card-group">
+        <% if (arrayGuiasDB.length> 0) { %>
+            
+            <% var test=0; %> 
+            <% arrayGuiasDB.forEach(guias => { %>   
+                <% console.log(test) %>
+                <% if(test>=4){ %>
+                    <% test=0;%>
+                    </div>
+                    <div class="card-group">
+                    <div class="card tarjetaGuias" style="width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"><%= guias.nombre %></h5>
+                            <p class="card-text"><%= guias.resumen %></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                  <% } else{ %>  
+                    <div class="card tarjetaGuias" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= guias.nombre %></h5>
+                            <p class="card-text"><%= guias.resumen %></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                 <% } %>
+                 <% test++;%> 
+            <% }) %>            
+        <% } %>
+        </div>        
+    </div>
+    
+    <%- include("template/footer") %>

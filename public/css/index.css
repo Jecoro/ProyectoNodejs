@@ -1,0 +1,96 @@
+body {
+  
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  main{
+    height: 130vh;
+  }
+  .portada{
+    margin-top: 10vh;
+    height: 20vh;
+    text-align: center;
+    background-image:url("../img/background.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: white;
+  }
+  a {
+    color: #00B7FF;
+  }
+  footer{
+    margin-top: 10vh;
+  }
+  .botonTitulo{
+  margin-top: 10px;  
+  background-color: blueviolet !important;
+  border: 1px solid white !important;
+  color: white !important;
+  }
+  .contenedorIndex{
+    height: 450px;
+    
+  }
+  .div1{
+    position:absolute;
+    bottom:0;
+    height: 200px;
+    width: 100%;
+    background-image: url("../img/imagen1pequeña.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10%;
+  }
+  .div2{
+    position:absolute;
+    bottom:0;
+    height: 200px;
+    width: 100%;
+    background-image: url("../img/img2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10%;
+  }
+  .div3{
+    position:absolute;
+    bottom:0;
+    height: 200px;
+    width: 100%;
+    background-image: url("../img/img4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10%;
+  }
+  .prueba{
+    background-color: #00B7FF;
+  }
+  .div4{
+    background-image: url("../img/img1.jpg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  }
+  .listaIndex{
+    list-style: none;
+    font-size: 27px;
+  }
+  .ultimaFila{
+    height: 20vh;
+  }
+  .pie{
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  .tarjetaGuias{
+    display: inline-block;
+  }
+  .fotoResumenGuia{
+    width: 25vh;
+    height: 23vh;
+    max-width: 30vh;
+    max-height: 23vh;
+  }

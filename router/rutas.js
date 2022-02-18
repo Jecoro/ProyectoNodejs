@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express') //Requerimos Express
 const router = express.Router();
 
@@ -8,6 +9,10 @@ const router = express.Router();
 //vamos a utilizar las rutas, por lo que deberemos poner:
 router.get('/', (req, res) => {
     res.render("index", { titulo: "mi titulo dinámico" })
+})
+
+router.get('/inicio', (req, res) => {
+    res.render('inicio')
 })
 
 router.get('/contacto', (req, res) => {
