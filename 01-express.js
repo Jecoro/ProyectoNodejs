@@ -32,6 +32,7 @@ app.use(express.static(__dirname + '/public'));
 // Llamadas a las rutas:
 app.use('/', require('./router/rutas'));
 app.use('/guias', require('./router/guias'));
+app.use('/galeria', require('./router/galeria'));
 
 app.use((req, res) => {
   res.status(404).render("404", {

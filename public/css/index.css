@@ -94,3 +94,16 @@ body {
     max-width: 30vh;
     max-height: 23vh;
   }
+  .fotoResumenGaleria{
+    max-width: 27vh;
+    max-height: 30vh;
+  }
+
+  .botonGaleria{
+    background-color: rgb(52, 52, 236);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    border-radius: 60px;
+    border: 2px solid blueviolet;
+  }

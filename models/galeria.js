@@ -6,10 +6,11 @@ const galeriaSchema = new Schema({
     material: String,
     tiempo: String,
     impresora: String,
-    autor: String
+    autor: String,
+    img:String
 })
 
 //Creamos el modelo
-const Galerias = mongoose.model('Guias', galeriaSchema, "guias");
+const Galeria = mongoose.model('Galeria', galeriaSchema, "galeria");
 
-module.exports = Galerias;
+module.exports = Galeria;

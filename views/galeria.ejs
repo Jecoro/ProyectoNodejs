@@ -4,33 +4,44 @@
         <br>
         <br>
         <br>
-        <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
-        Compartimos tutoriales sobre:
+        <a class="btn btn-success btn-block my-4" href="/galeria/crearImagen">Crear nueva publicacion</a>
+        Nuestras Creaciones:
         <br>
         <div class="card-group">
-        <% if (arrayGuiasDB.length> 0) { %>
+        <% if (arrayGaleriaDB.length> 0) { %>
             
             <% var test=0; %> 
-            <% arrayGuiasDB.forEach(guias => { %>   
+            <% arrayGaleriaDB.forEach(Galeria => { %>   
                 <% console.log(test) %>
                 <% if(test>=4){ %>
                     <% test=0;%>
                     </div>
+                    <div id="marco"><img  id="lienzo" src="" /><button id="cerrarImg" class="botonGaleria" onclick="ocultar()">Cerrar</button></div>
                     <div class="card-group">
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         
                         <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <p class="card-text"><%= guias.resumen %></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title"><%= Galeria.nombre %></h5>
+                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria"/>
+                            <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
+                            <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
+                            <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
+                            <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
+                            <button class="botonGaleria" onclick="myFunction('<%= Galeria.img %>')">Ver Imagen</button>
+                            
                         </div>
                     </div>
                   <% } else{ %>  
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <p class="card-text"><%= guias.resumen %></p>
-                            <a href="#" class="btn btn-primary botonCard">Go somewhere</a>
+                            <h5 class="card-title"><%= Galeria.nombre %></h5>
+                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria"/>
+                            <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
+                            <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
+                            <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
+                            <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
+                            <button class="botonGaleria" onclick="myFunction('<%= Galeria.img %>')">Ver Imagen</button>
+                            
                         </div>
                     </div>
                  <% } %>
@@ -39,5 +50,21 @@
         <% } %>
         </div>        
     </div>
+    <script>
+     
+        ocultar();
+
+        function myFunction($img) {
+          document.getElementById("lienzo").src = $img;
+          document.getElementById("marco").style.display = 'block';
+        }
+        function ocultar(){
+          document.getElementById("marco").style.display = 'none';
+        }
     
+
+
+  
+        
+        </script>
     <%- include("template/footer") %>

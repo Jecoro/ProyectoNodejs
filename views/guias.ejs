@@ -7,7 +7,7 @@
         <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
         Compartimos tutoriales sobre:
         <br>
-        <div class="card-group">
+        <div id="contenido"  class="card-group">
         <% if (arrayGuiasDB.length> 0) { %>
             
             <% var test=0; %> 
@@ -16,14 +16,14 @@
                 <% if(test>=4){ %>
                     <% test=0;%>
                     </div>
-                    <div class="card-group">
+                    <div id="contenido2" class="card-group contenido">
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         
                         <div class="card-body">
                             <h5 class="card-title"><%= guias.nombre %></h5>
                             <img src="<%= guias.img %>" class="fotoResumenGuia"/>
                             <p class="card-text"><%= guias.resumen %></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <button class="botonGaleria" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')">Ver Guia</button>
                         </div>
                     </div>
                   <% } else{ %>  
@@ -32,14 +32,30 @@
                             <h5 class="card-title"><%= guias.nombre %></h5>
                             <img src="<%= guias.img %>" class="fotoResumenGuia"/>
                             <p class="card-text"><%= guias.resumen %></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <button class="botonGaleria" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')">Ver Guia</button>
                         </div>
                     </div>
                  <% } %>
                  <% test++;%> 
             <% }) %>            
         <% } %>
-        </div>        
+        </div>     
+        <div>
+            <h2 id="tituloContenido"></h2>
+            <p id="nuevoContenido"></p>
+            <p id="video"></p>
+            <div id="volver"></div>
+            
+        </div>   
     </div>
-    
+    <script>
+        function myFunction($nombre,$texto,$video){
+            document.getElementById("contenido").style.display = 'none';
+            document.getElementById("contenido2").style.display = 'none';
+            document.getElementById("tituloContenido").innerHTML = $nombre;
+            document.getElementById("nuevoContenido").innerHTML = $texto+"<br>"+$video;
+            document.getElementById("volver").innerHTML =`<a href="/guias">Volver</a>`;
+
+        }
+    </script>
     <%- include("template/footer") %>
