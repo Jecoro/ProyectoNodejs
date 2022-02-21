@@ -4,14 +4,14 @@
         <br>
         <br>
         <br>
-        <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
+        <a class="btn btn-success btn-block my-4" href="/tienda/crearItem">Crear nuevo item</a>
         Compartimos tutoriales sobre:
         <br>
         <div class="card-group">
-        <% if (arrayGuiasDB.length> 0) { %>
+        <% if (arrayTiendaDB.length> 0) { %>
             
             <% var test=0; %> 
-            <% arrayGuiasDB.forEach(guias => { %>   
+            <% arrayTiendaDB.forEach(tienda => { %>   
                 <% console.log(test) %>
                 <% if(test>=4){ %>
                     <% test=0;%>
@@ -20,16 +20,18 @@
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         
                         <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <p class="card-text"><%= guias.resumen %></p>
+                            <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
+                            <h5 class="card-title"><%= tienda.nombre %></h5>
+                            <p class="card-text"><%= tienda.precio %></p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                   <% } else{ %>  
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <p class="card-text"><%= guias.resumen %></p>
+                            <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
+                            <h5 class="card-title"><%= tienda.nombre %></h5>
+                            <p class="card-text"><%= tienda.precio %></p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
@@ -37,7 +39,9 @@
                  <% test++;%> 
             <% }) %>            
         <% } %>
-        </div>        
+        </div>
+        </div>
+      </div>        
     </div>
     
     <%- include("template/footer") %>

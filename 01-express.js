@@ -33,6 +33,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', require('./router/rutas'));
 app.use('/guias', require('./router/guias'));
 app.use('/galeria', require('./router/galeria'));
+app.use('/tienda',require('./router/tienda'));
 
 app.use((req, res) => {
   res.status(404).render("404", {
