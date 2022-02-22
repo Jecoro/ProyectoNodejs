@@ -48,6 +48,7 @@
                     <br>
                     <br>
                     <h1 >Cesta</h1>
+                    <h3 >Articulo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Precio</h3>
                     <hr class="tituloCarrito">
                     <button class="comprar"  onclick="comprar()">Comprar</button>
                 </div> 
@@ -58,7 +59,7 @@
     <script>
         
         function carrito($text,$precio){
-            $( ".carrito_compra" ).append($text+" "+$precio+"€");
+            $( ".carrito_compra" ).append($text+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+$precio+"€");
             $( ".carrito_compra" ).append("<br>");
         }
         function comprar(){
