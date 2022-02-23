@@ -40,7 +40,7 @@
             <% }) %>            
         <% } %>
         </div>     
-        <div>
+        <div class="div1001">
             <h2 id="tituloContenido"></h2>
             <p id="nuevoContenido"></p>
             <p id="video"></p>
@@ -50,11 +50,13 @@
     </div>
     <script>
         function myFunction($nombre,$texto,$video){
+            $( ".div1001" ).hide();
             document.getElementById("contenido").style.display = 'none';
             document.getElementById("contenido2").style.display = 'none';
             document.getElementById("tituloContenido").innerHTML = $nombre;
             document.getElementById("nuevoContenido").innerHTML = $texto+"<br>"+$video;
             document.getElementById("volver").innerHTML =`<a href="/guias">Volver</a>`;
+            $( ".div1001" ).show();
 
         }
     </script>
