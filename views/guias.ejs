@@ -17,22 +17,19 @@
                     <% test=0;%>
                     </div>
                     <div id="contenido2" class="card-group contenido">
-                    <div class="card tarjetaGuias" style="width: 18rem;">
-                        
-                        <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <img src="<%= guias.img %>" class="fotoResumenGuia"/>
-                            <p class="card-text"><%= guias.resumen %></p>
-                            <button class="botonGaleria" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')">Ver Guia</button>
+                        <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
+                            <div class="card-body">
+                                <h5 class="card-title"><%= guias.nombre %></h5>
+                                <img src="<%= guias.img %>" class="fotoResumenGuia"/>
+                                <p class="card-text"><%= guias.resumen %></p>
+                            </div>
                         </div>
-                    </div>
                   <% } else{ %>  
-                    <div class="card tarjetaGuias" style="width: 18rem;">
+                    <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
                         <div class="card-body">
                             <h5 class="card-title"><%= guias.nombre %></h5>
                             <img src="<%= guias.img %>" class="fotoResumenGuia"/>
                             <p class="card-text"><%= guias.resumen %></p>
-                            <button class="botonGaleria" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')">Ver Guia</button>
                         </div>
                     </div>
                  <% } %>

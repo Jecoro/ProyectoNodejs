@@ -121,3 +121,35 @@ body {
     border-radius: 60px;
     border: 2px solid blueviolet;
   }
+  .enlaceCard{
+    text-decoration: none;
+    color: black;
+  }
+  a{
+    color: black;
+  }
+  .marco{
+    margin-top: 160px;
+    min-height: 110vh;
+    min-width: 120vh;
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  .lienzo{
+    margin-left: 230px;
+    margin-top: 80px;
+  }
+  .botoncerrar{
+    text-decoration: none;
+    width: 20px;
+    text-align: center;
+    background-color: black;
+    font-size: larger;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid white;
+  }

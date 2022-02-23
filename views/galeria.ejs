@@ -1,5 +1,5 @@
 <%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
-
+    
     <div class="container">
         <br>
         <br>
@@ -16,18 +16,18 @@
                 <% if(test>=4){ %>
                     <% test=0;%>
                     </div>
-                    <div id="marco"><img  id="lienzo" src="" /><button id="cerrarImg" class="botonGaleria" onclick="ocultar()">Cerrar</button></div>
+                    <div id="marco" class="marco"><a class="botoncerrar" href="/galeria">X</a><br><img  id="lienzo" class="lienzo" src="" /><br></div>
                     <div class="card-group">
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         
                         <div class="card-body">
                             <h5 class="card-title"><%= Galeria.nombre %></h5>
-                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria"/>
+                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria" onclick="myFunction('<%= Galeria.img %>')"/>
                             <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
                             <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
                             <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
                             <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
-                            <button class="botonGaleria" onclick="myFunction('<%= Galeria.img %>')">Ver Imagen</button>
+
                             
                         </div>
                     </div>
@@ -35,12 +35,12 @@
                     <div class="card tarjetaGuias" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title"><%= Galeria.nombre %></h5>
-                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria"/>
+                            <img src="<%= Galeria.img %>" class="fotoResumenGaleria" onclick="myFunction('<%= Galeria.img %>')"/>
                             <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
                             <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
                             <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
                             <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
-                            <button class="botonGaleria" onclick="myFunction('<%= Galeria.img %>')">Ver Imagen</button>
+
                             
                         </div>
                     </div>
@@ -51,20 +51,18 @@
         </div>        
     </div>
     <script>
-     
         ocultar();
 
         function myFunction($img) {
           document.getElementById("lienzo").src = $img;
-          document.getElementById("marco").style.display = 'block';
+          $(".marco").fadeIn();
+
         }
+
         function ocultar(){
-          document.getElementById("marco").style.display = 'none';
+            document.getElementById("marco").style.display="none"
+
         }
     
-
-
-  
-        
-        </script>
+    </script>
     <%- include("template/footer") %>
