@@ -103,12 +103,20 @@ body {
   }
 
   .botonGaleria{
-    background-color: rgb(52, 52, 236);
+    background-color: rgb(255, 255, 255);
+    width: 20%;
+    height: 20%;
+    margin-bottom: 10%;
     color: white;
+    margin-left: 35%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: large;
     border-radius: 60px;
-    border: 2px solid blueviolet;
+    border: none;
+    background-image:url("../img/carrito.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
   .cuerpo_principal{
     height: 100vh;
@@ -183,3 +191,4 @@ body {
     font-family: 'Lato';
     padding: 10px;
   }
+  
