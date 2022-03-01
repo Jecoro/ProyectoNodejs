@@ -20,21 +20,22 @@
                             </div>
                             <div class="card-group">
                             <div class="card tarjetaGuias" style="width: 18rem;">
-                                
+                                <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a>
                                 <div class="card-body">
                                     <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
                                     <h5 class="card-title"><%= tienda.nombre %></h5>
                                     <p class="card-text"><%= tienda.precio %>€</p>
-                                    <button class="botonGaleria" onclick="carrito('<%= tienda.nombre %>',' <%= tienda.precio %>')">Añadir al carrito</button>
+                                    <button class="botonGaleria">Añadir al carrito</button>
                                 </div>
                             </div>
                         <% } else{ %>  
                             <div class="card tarjetaGuias" style="width: 18rem;">
+                                <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a>
                                 <div class="card-body">
                                     <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
                                     <h5 class="card-title"><%= tienda.nombre %></h5>
                                     <p class="card-text"><%= tienda.precio %>€</p>
-                                    <button class="botonGaleria" onclick="carrito('<%= tienda.nombre %>',' <%= tienda.precio %>')">Añadir al carrito</button>
+                                    <button class="botonGaleria">Añadir al carrito</button>
                                 </div>
                             </div>
                         <% } %>
@@ -47,35 +48,99 @@
                     <br>
                     <br>
                     <br>
-                    <h1 >Cesta:</h1>
-                    
-                    <h3 >Articulo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Precio</h3>
-                    <hr class="tituloCarrito">
-                    <h1 id="totalCompra" class="totalCompra"></h1>
+                    <table id="carrito">
+                        <tr>
+                            <th colspan="3">Cesta:</th>
+                        </tr>
+                        <tr id="estructuraCarrito">
+                            <td id="nombre">Articulo</td>
+                            <td>Cantidad</td>
+                            <td>Precio</td>
+                        </tr>
+                        <tbody id="cuerpoCarrito">
+
+                        </tbody>
+                        <tr>
+                            <th>Total:</th>
+                            <th id="totalCompra" class="totalCompra"></th>
+                        </tr>
+                    </table>
                     <button class="comprar"  onclick="comprar()">Comprar</button>
                 </div> 
             </div>        
         </div>
        
     </div>
-    <script>
-        var total=0;
-        function carrito($text,$precio){
-            total=parseInt(total)+parseInt($precio);
-            $( ".carrito_compra" ).append($text+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+$precio+"€");
-            document.getElementById("totalCompra").innerHTML=("Total: "+total+" €");
-            $( ".carrito_compra" ).append("<br>");
-            
-        }
-        function comprar(){
-            location.reload();
-            alert("Compra Realizada");
-        }
 
-
-
-    
-
-
-    </script>
     <%- include("template/footer") %>
+
+   
+    <script>
+        let carrito = [];
+        document.addEventListener('DOMContentLoaded',()=>{
+
+        var total=0;
+        document.querySelectorAll('.botonGaleria').forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+                let Articulo={
+                    nombre:'',
+                    precio:0,
+                    cantidad:1
+            }
+        
+                console.log("hola");
+                let nombre=e.target.parentNode.querySelector(".card-title").innerHTML;
+                let precio=e.target.parentNode.querySelector(".card-text").innerHTML;
+                Articulo.nombre=nombre;
+                Articulo.precio=precio;
+                if(!existeArticulo(nombre)){
+                    carrito.push(Articulo);
+                }
+            
+                pintarCarrito();
+            });
+        });
+
+        function pintarCarrito(){
+            let contenedor=document.getElementById("cuerpoCarrito");
+            contenedor.innerHTML='';
+            for(let i=0;i<carrito.length;i++){
+                let fila=document.createElement("tr");
+                let celdas=`<td>${carrito[i].nombre}</td><td>${carrito[i].cantidad}</td><td>${carrito[i].precio}</td>`;
+                fila.innerHTML=celdas;
+                contenedor.appendChild(fila);
+                total=total+parseInt(carrito[i].precio);
+                document.getElementById("totalCompra").innerHTML=total+" €";
+            }
+            localStorage.setItem('carrito',JSON.stringify(carrito));
+        }
+   
+
+        function existeArticulo(nombre){
+            for(let i=0;i<carrito.length;i++){
+                console.log(carrito[i].nombre===nombre);
+                console.log(carrito[i].nombre);
+                console.log(nombre);
+                console.log(carrito);
+                if(carrito[i].nombre===nombre){
+                    carrito[i].cantidad++;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        document.querySelectorAll('.comprar').forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+                location.reload();
+                alert("Compra Realizada");             
+            });
+        });
+
+
+    });
+    </script>
+
+
+
+

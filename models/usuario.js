@@ -1,47 +1,38 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
-var uniqueValidator = require('mongoose-unique-validator');
+const saltRounds=10;
 
-let rolesValidos = {
-    values: ["ADMIN", "USER"],
-    message: '{VALUE} no es un role válido'
-}
-
-let Schema = mongoose.Schema;
-
-let usuarioSchema = new Schema({
-    nombre: {
-        type: String,
-        required: [true, 'El nombre es necesario'],
-    },
-    email: {
-        type: String,
-        unique: true,
-        required: [true, "El correo es necesario"],
-    },
-    password: {
-        type: String,
-        required: [true, "Le contraseña es obligatoria"],
-    },
-    role: {
-        type: String,
-        default: 'USER',
-        required: [true],
-        enum: rolesValidos,
-    },
+const userSchema = new mongoose.Schema({
+    username: {type: String, required: true, unique:true},
+    password: {type: String, required: true}
+});
+ 
+userSchema.pre('save',function(next){
+    if(this.isNew || this.isModified('password')){
+        const document=this;
+        bcrypt.hash(document.password, saltRounds,(err,hashedPassword)=>{
+            if(err){
+                next(err);
+            }else{
+                document.password=hashedPassword;
+                next();
+            }
+        });
+    }else{
+        next();
+    }
 });
 
-// elimina la key password del objeto que retorna al momento de crear un usuario
-usuarioSchema.methods.toJSON = function() {
-    let user = this;
-    let userObject = user.toObject();
-    delete userObject.password;
-
-    return userObject;
+userSchema.methods.isCorrectPassword=function(password,callback){
+    bcrypt.compare(password,this.password,function(err,res){
+        if(err){
+            callback(err);
+        }else{
+            callback(err,res);
+        }
+    });
 }
 
-usuarioSchema.plugin(uniqueValidator, {
-    message: '{PATH} debe de ser único'
-})
-
-module.exports = mongoose.model('Usuario', usuarioSchema)
+module.exports = mongoose.model('User',userSchema);

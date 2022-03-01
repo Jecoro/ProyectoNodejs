@@ -34,6 +34,8 @@ app.use('/', require('./router/rutas'));
 app.use('/guias', require('./router/guias'));
 app.use('/galeria', require('./router/galeria'));
 app.use('/tienda',require('./router/tienda'));
+app.use('/login',require('./router/login'));
+app.use('/singUp',require('./router/singUp'));
 
 app.use((req, res) => {
   res.status(404).render("404", {
@@ -41,6 +43,9 @@ app.use((req, res) => {
     descripcion: "Page Not Found"
   })
 })
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

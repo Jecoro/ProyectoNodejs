@@ -39,13 +39,13 @@ router.get('/:id', async (req, res) => {
     try {
         const galeriaDB = await Galeria.findOne({ _id: id })
         console.log(galeriaDB)
-        res.render('detalle', {
+        res.render('detalleGaleria', {
             galeria: galeriaDB,
             error: false
         })
     } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('detalle', {
+        res.render('detalleGaleria', {
             error: true,
             mensaje: 'No encontrado!'
         })

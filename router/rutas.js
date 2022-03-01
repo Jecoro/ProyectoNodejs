@@ -18,5 +18,7 @@ router.get('/inicio', (req, res) => {
 router.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
 })
+
+
 // Por último, vamos a exportarlo:
 module.exports = router;

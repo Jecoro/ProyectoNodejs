@@ -39,13 +39,13 @@ router.get('/:id', async (req, res) => {
     try {
         const tiendaDB = await Tienda.findOne({ _id: id })
         console.log(tiendaDB)
-        res.render('detalle', {
+        res.render('detalleItem', {
             tienda: tiendaDB,
             error: false
         })
     } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('detalle', {
+        res.render('detalleItem', {
             error: true,
             mensaje: 'No encontrado!'
         })

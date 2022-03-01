@@ -40,13 +40,13 @@ router.get('/:id', async (req, res) => {
     try {
         const guiasDB = await Guias.findOne({ _id: id })
         console.log(guiasDB)
-        res.render('detalle', {
+        res.render('detalleGuias', {
             guias: guiasDB,
             error: false
         })
     } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('detalle', {
+        res.render('detalleGuias', {
             error: true,
             mensaje: 'No encontrado!'
         })

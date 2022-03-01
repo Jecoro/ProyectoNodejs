@@ -18,18 +18,22 @@
                     </div>
                     <div id="contenido2" class="card-group contenido">
                         <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
+                            <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
                             <div class="card-body">
                                 <h5 class="card-title"><%= guias.nombre %></h5>
                                 <img src="<%= guias.img %>" class="fotoResumenGuia"/>
                                 <p class="card-text"><%= guias.resumen %></p>
+
                             </div>
                         </div>
                   <% } else{ %>  
                     <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
+                        <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
                         <div class="card-body">
                             <h5 class="card-title"><%= guias.nombre %></h5>
                             <img src="<%= guias.img %>" class="fotoResumenGuia"/>
                             <p class="card-text"><%= guias.resumen %></p>
+                            
                         </div>
                     </div>
                  <% } %>
@@ -46,6 +50,7 @@
         </div>   
     </div>
     <script>
+        console.log(localStorage.getItem('carrito'));
         function myFunction($nombre,$texto,$video){
             $( ".div1001" ).hide();
             document.getElementById("contenido").style.display = 'none';
