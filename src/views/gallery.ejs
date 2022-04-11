@@ -1,0 +1,64 @@
+<%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
+
+<div class="container">
+  <br />
+  <br />
+  <br />
+  <a class="btn btn-success btn-block my-4" href="/galeria/crearImagen">Crear nueva publicacion</a>
+  Nuestras Creaciones:
+  <br />
+  <div class="card-group">
+    <% if (arrayGaleriaDB.length> 0) { %> <% var test=0; %> <% arrayGaleriaDB.forEach(Galeria => {
+    %> <% console.log(test) %> <% if(test>=4){ %> <% test=0;%>
+  </div>
+  <div id="marco" class="marco"
+    ><a class="botoncerrar" href="/galeria">X</a><br /><img id="lienzo" class="lienzo" src="" /><br
+  /></div>
+  <div class="card-group">
+    <div class="card tarjetaGuias" style="width: 18rem">
+      <a class="btn btn-warning btn-sm" href="galeria/<%= Galeria.id %>">Editar/Eliminar</a>
+      <div class="card-body">
+        <h5 class="card-title"><%= Galeria.nombre %></h5>
+        <img
+          src="<%= Galeria.img %>"
+          class="fotoResumenGaleria"
+          onclick="myFunction('<%= Galeria.img %>')"
+        />
+        <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
+        <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
+        <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
+        <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
+      </div>
+    </div>
+    <% } else{ %>
+    <div class="card tarjetaGuias" style="width: 18rem">
+      <a class="btn btn-warning btn-sm" href="galeria/<%= Galeria.id %>">Editar/Eliminar</a>
+      <div class="card-body">
+        <h5 class="card-title"><%= Galeria.nombre %></h5>
+        <img
+          src="<%= Galeria.img %>"
+          class="fotoResumenGaleria"
+          onclick="myFunction('<%= Galeria.img %>')"
+        />
+        <p class="card-text"><b>Material:</b> <%= Galeria.material %></p>
+        <p class="card-text"><b> Tiempo:</b> <%= Galeria.tiempo %></p>
+        <p class="card-text"><b> Impresora:</b> <%= Galeria.impresora %></p>
+        <p class="card-text"><b>Autor:</b> <%= Galeria.autor %></p>
+      </div>
+    </div>
+    <% } %> <% test++;%> <% }) %> <% } %>
+  </div>
+</div>
+<script>
+  ocultar();
+
+  function myFunction($img) {
+    document.getElementById('lienzo').src = $img;
+    $('.marco').fadeIn();
+  }
+
+  function ocultar() {
+    document.getElementById('marco').style.display = 'none';
+  }
+</script>
+<%- include("template/footer") %>
