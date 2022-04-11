@@ -7,16 +7,21 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
+router.get('/', (req, res) => {
+  return res.render('login');
+});
+
 router.post('/', (req, res) => {
-  res.render('login');
   const { username, password } = req.body;
-  User.findOne({ username }, (req, res) => {
+
+  User.findOne({ username }, (err, user) => {
     if (err) {
+      console.error(err);
       res.status(500).send('ERROR AL AUTENTICAR AL USUARIO');
-    } else if (!user) {
+    } else if (user == null) {
       res.status(200).send('El Usuario no existe');
     } else {
-      user.isCorrectPassword(password, (err, res) => {
+      user.isCorrectPassword(password, (err, result) => {
         if (err) {
           res.status(500).send('ERROR AL AUTENTICAR AL USUARIO');
         } else if (result) {
