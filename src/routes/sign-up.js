@@ -8,11 +8,16 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 
 router.get('/', (req, res) => {
-  res.render('registro');
+  return res.render('sign-up');
+});
+
+router.post('/', (req, res) => {
   const { username, password } = req.body;
-  const user = new user({ username, password });
+  const user = new User({ username, password });
+
   user.save((err) => {
     if (err) {
+      console.error(err);
       res.status(500).send('ERROR AL REGISTRAR AL USUARIO');
     } else {
       res.status(200).send('Usuario Registrado');
