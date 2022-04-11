@@ -1,24 +1,15 @@
 const { response } = require('express');
-const express = require('express') //Requerimos Express
+const express = require('express');
+
 const router = express.Router();
 
-// Ahora, CORTAMOS del fichero principal 01-express.js
-// las dos rutas que tenemos: la principal ( / ) y la 
-// de contactos ( /contaco )
-// Importante que ya no usaremos el app.get(...), ahora
-//vamos a utilizar las rutas, por lo que deberemos poner:
 router.get('/', (req, res) => {
-    res.render("index", { titulo: "mi titulo dinámico" })
-})
+  console.log(req.user);
+  res.render('home', { titulo: 'mi titulo dinámico' });
+});
 
-router.get('/inicio', (req, res) => {
-    res.render('inicio')
-})
+router.get('/contact', (req, res) => {
+  res.render('contact', { tituloContacto: 'Estamos en contacto de manera dinámica!!' });
+});
 
-router.get('/contacto', (req, res) => {
-    res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
-})
-
-
-// Por último, vamos a exportarlo:
 module.exports = router;

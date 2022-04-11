@@ -4,6 +4,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const session = require('express-session');
+const SQLiteStore = require('connect-sqlite3')(session);
+
+require('./passport-setup');
 
 const app = express();
 
@@ -14,6 +18,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Allow parsing of json in the body field of requests
 app.use(bodyParser.json());
+app.use(
+  session({
+    secret: 'MY_SUPER_SECRET_KEY',
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({ db: 'sessions.db', dir: './' }),
+  }),
+);
 
 mongoose
   .connect(process.env.MONGODB_URI, {
