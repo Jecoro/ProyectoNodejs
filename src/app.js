@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
@@ -15,14 +16,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log('Connection established to the DB.'))
   .catch((e) => console.log(e));
 
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, '/views'));
 
-app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 // Set up application routing
 app.use('/', require('./routes/routes'));
