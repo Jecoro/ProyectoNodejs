@@ -1,19 +1,19 @@
-<%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
-    
+<%- include("template/header", {tituloWeb: 'Panel de Administración' }) %>
+
     <div class="row cuerpo_principal">
-        <div class="col "></div>    
+        <div class="col "></div>
             <div class="col-8 container">
                 <br>
                 <br>
                 <br>
                 <a class="btn btn-success btn-block my-4" href="/tienda/crearItem">Crear nuevo item</a>
-                
+
                 <br>
                 <div class="card-group">
                 <% if (arrayTiendaDB.length> 0) { %>
-                    
-                    <% var test=0; %> 
-                    <% arrayTiendaDB.forEach(tienda => { %>   
+
+                    <% var test=0; %>
+                    <% arrayTiendaDB.forEach(tienda => { %>
                         <% console.log(test) %>
                         <% if(test>=4){ %>
                             <% test=0;%>
@@ -28,7 +28,7 @@
                                     <button class="botonGaleria">&nbsp;</button>
                                 </div>
                             </div>
-                        <% } else{ %>  
+                        <% } else{ %>
                             <div class="card tarjetaGuias" style="width: 18rem;">
                                 <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a>
                                 <div class="card-body">
@@ -39,8 +39,8 @@
                                 </div>
                             </div>
                         <% } %>
-                        <% test++;%> 
-                    <% }) %>            
+                        <% test++;%>
+                    <% }) %>
                 <% } %>
                 </div>
                 </div>
@@ -66,15 +66,15 @@
                         </tr>
                     </table>
                     <button class="comprar"  onclick="comprar()">Comprar</button>
-                </div> 
-            </div>        
+                </div>
+            </div>
         </div>
-       
+
     </div>
 
     <%- include("template/footer") %>
 
-   
+
     <script>
         let carrito = [];
         document.addEventListener('DOMContentLoaded',()=>{
@@ -87,7 +87,7 @@
                     precio:0,
                     cantidad:1
             }
-        
+
                 console.log("hola");
                 let nombre=e.target.parentNode.querySelector(".card-title").innerHTML;
                 let precio=e.target.parentNode.querySelector(".card-text").innerHTML;
@@ -96,7 +96,7 @@
                 if(!existeArticulo(nombre)){
                     carrito.push(Articulo);
                 }
-            
+
                 pintarCarrito();
             });
         });
@@ -114,7 +114,7 @@
             }
             localStorage.setItem('carrito',JSON.stringify(carrito));
         }
-   
+
 
         function existeArticulo(nombre){
             for(let i=0;i<carrito.length;i++){
@@ -133,7 +133,7 @@
         document.querySelectorAll('.comprar').forEach((element)=>{
             element.addEventListener("click",(e)=>{
                 location.reload();
-                alert("Compra Realizada");             
+                alert("Compra Realizada");
             });
         });
 

@@ -1,9 +1,9 @@
 body {
-  
+
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: rgb(255, 255, 255);
   }
-  
+
   main{
     height: 130vh;
   }
@@ -23,14 +23,14 @@ body {
     margin-top: 10vh;
   }
   .botonTitulo{
-  margin-top: 10px;  
+  margin-top: 10px;
   background-color: blueviolet !important;
   border: 1px solid white !important;
   color: white !important;
   }
   .contenedorIndex{
     height: 510px;
-    
+
   }
   .div1{
     position:absolute;
@@ -86,7 +86,7 @@ body {
     height: 50px;
     bottom: 0;
     width: 100%;
-    
+
   }
   .tarjetaGuias{
     display: inline-block;
@@ -191,4 +191,3 @@ body {
     font-family: 'Lato';
     padding: 10px;
   }
-  

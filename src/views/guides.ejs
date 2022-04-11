@@ -1,65 +1,61 @@
-<%- include("template/cabecera", {tituloWeb: 'Panel de Administración' }) %>
+<%- include("template/header", {tituloWeb: 'Panel de Administración' }) %>
 
-    <div class="container">
-        <br>
-        <br>
-        <br>
-        <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
-        Compartimos tutoriales sobre:
-        <br>
-        <div id="contenido"  class="card-group">
-        <% if (arrayGuiasDB.length> 0) { %>
-            
-            <% var test=0; %> 
-            <% arrayGuiasDB.forEach(guias => { %>   
-                <% console.log(test) %>
-                <% if(test>=4){ %>
-                    <% test=0;%>
-                    </div>
-                    <div id="contenido2" class="card-group contenido">
-                        <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
-                            <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><%= guias.nombre %></h5>
-                                <img src="<%= guias.img %>" class="fotoResumenGuia"/>
-                                <p class="card-text"><%= guias.resumen %></p>
-
-                            </div>
-                        </div>
-                  <% } else{ %>  
-                    <div class="card tarjetaGuias" style="width: 18rem;" onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')" >
-                        <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= guias.nombre %></h5>
-                            <img src="<%= guias.img %>" class="fotoResumenGuia"/>
-                            <p class="card-text"><%= guias.resumen %></p>
-                            
-                        </div>
-                    </div>
-                 <% } %>
-                 <% test++;%> 
-            <% }) %>            
-        <% } %>
-        </div>     
-        <div class="div1001">
-            <h2 id="tituloContenido"></h2>
-            <p id="nuevoContenido"></p>
-            <p id="video"></p>
-            <div id="volver"></div>
-            
-        </div>   
+<div class="container">
+  <br />
+  <br />
+  <br />
+  <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
+  Compartimos tutoriales sobre:
+  <br />
+  <div id="contenido" class="card-group">
+    <% if (arrayGuiasDB.length> 0) { %> <% var test=0; %> <% arrayGuiasDB.forEach(guias => { %> <%
+    console.log(test) %> <% if(test>=4){ %> <% test=0;%>
+  </div>
+  <div id="contenido2" class="card-group contenido">
+    <div
+      class="card tarjetaGuias"
+      style="width: 18rem"
+      onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')"
+    >
+      <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
+      <div class="card-body">
+        <h5 class="card-title"><%= guias.nombre %></h5>
+        <img src="<%= guias.img %>" class="fotoResumenGuia" />
+        <p class="card-text"><%= guias.resumen %></p>
+      </div>
     </div>
-    <script>
-        console.log(localStorage.getItem('carrito'));
-        function myFunction($nombre,$texto,$video){
-            $( ".div1001" ).hide();
-            document.getElementById("contenido").style.display = 'none';
-            document.getElementById("contenido2").style.display = 'none';
-            document.getElementById("tituloContenido").innerHTML = $nombre;
-            document.getElementById("nuevoContenido").innerHTML = $texto+"<br>"+$video;
-            document.getElementById("volver").innerHTML =`<a href="/guias">Volver</a>`;
-            $( ".div1001" ).show();
-
-        }
-    </script>
-    <%- include("template/footer") %>
+    <% } else{ %>
+    <div
+      class="card tarjetaGuias"
+      style="width: 18rem"
+      onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')"
+    >
+      <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
+      <div class="card-body">
+        <h5 class="card-title"><%= guias.nombre %></h5>
+        <img src="<%= guias.img %>" class="fotoResumenGuia" />
+        <p class="card-text"><%= guias.resumen %></p>
+      </div>
+    </div>
+    <% } %> <% test++;%> <% }) %> <% } %>
+  </div>
+  <div class="div1001">
+    <h2 id="tituloContenido"></h2>
+    <p id="nuevoContenido"></p>
+    <p id="video"></p>
+    <div id="volver"></div>
+  </div>
+</div>
+<script>
+  console.log(localStorage.getItem('carrito'));
+  function myFunction($nombre, $texto, $video) {
+    $('.div1001').hide();
+    document.getElementById('contenido').style.display = 'none';
+    document.getElementById('contenido2').style.display = 'none';
+    document.getElementById('tituloContenido').innerHTML = $nombre;
+    document.getElementById('nuevoContenido').innerHTML = $texto + '<br>' + $video;
+    document.getElementById('volver').innerHTML = `<a href="/guias">Volver</a>`;
+    $('.div1001').show();
+  }
+</script>
+<%- include("template/footer") %>

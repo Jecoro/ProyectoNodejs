@@ -2,10 +2,10 @@
   "name": "03express",
   "version": "1.0.0",
   "description": "",
-  "main": "01-express.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node 01-express",
-    "dev": "nodemon 01-express"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +26,7 @@
     "passport-local-mongoose": "^6.1.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "prettier": "^2.6.2"
   }
 }
