@@ -4,7 +4,7 @@
   <br />
   <br />
   <br />
-  <a class="btn btn-success btn-block my-4" href="/galeria/crearImagen">Crear nueva publicacion</a>
+  <a class="btn btn-success btn-block my-4" href="/gallery/create-image">Crear nueva publicacion</a>
   Nuestras Creaciones:
   <br />
   <div class="card-group">
@@ -12,7 +12,7 @@
     %> <% console.log(test) %> <% if(test>=4){ %> <% test=0;%>
   </div>
   <div id="marco" class="marco"
-    ><a class="botoncerrar" href="/galeria">X</a><br /><img id="lienzo" class="lienzo" src="" /><br
+    ><a class="botoncerrar" href="/gallery">X</a><br /><img id="lienzo" class="lienzo" src="" /><br
   /></div>
   <div class="card-group">
     <div class="card tarjetaGuias" style="width: 18rem">
@@ -20,7 +20,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= Galeria.nombre %></h5>
         <img
-          src="<%= Galeria.img %>"
+          src="/public/<%= Galeria.img %>"
           class="fotoResumenGaleria"
           onclick="myFunction('<%= Galeria.img %>')"
         />
@@ -36,7 +36,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= Galeria.nombre %></h5>
         <img
-          src="<%= Galeria.img %>"
+          src="/public/<%= Galeria.img %>"
           class="fotoResumenGaleria"
           onclick="myFunction('<%= Galeria.img %>')"
         />

@@ -1,22 +1,33 @@
 
-<div class="container mt-3">
- 
+<%- include("template/header" , {tituloWeb: "Crear usuario" }) %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <h2>Crear nuevo usuario</h2>
+        </div>
+        
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <form action="/" class="my-2" method="POST">
+                <input type="text" required placeholder="Nombre" id="nombre" class="form-control my-2" name="nombre">
+                <input type="text" required placeholder="Apellidos" id="apellidos" class="form-control my-2" name="apellidos">
+                <input type="email" required placeholder="Correo electrónico" id="email" class="form-control my-2" name="email">
+                <input type="text" required placeholder="Usuario" id="usuario" class="form-control my-2" name="usuario">
+                <input type="password" required placeholder="contraseña" id="contrasena" class="form-control my-2" name="password">
+                <button type="submit" id="crear" class="btn btn-dark btn-block mt-3">
+                    Crear
+                </button>
+                    <label>
+                      <a href="/vistaLogin" class="btn btn-dark btn-block mt-3 ms-3 link">Volver</a>
+                    </label>
+            </form>
+        </div>
       
-    <form action="/" method="post">
-      <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-        <button type="submit">singUp</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-      </div>
-    
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-    </form>
-  </div>
+    </div>
+  
+</div>
+<script src="../js/registro.js"></script>
+
+<%- include("template/footer") %>

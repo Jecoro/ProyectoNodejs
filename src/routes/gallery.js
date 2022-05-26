@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const arrayGaleriaDB = await Galeria.find();
     console.log(arrayGaleriaDB);
-    res.render('galeria', {
+    res.render('gallery', {
       arrayGaleriaDB: arrayGaleriaDB,
     });
   } catch (error) {

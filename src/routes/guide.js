@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const arrayGuiasDB = await Guias.find();
     console.log(arrayGuiasDB);
-    res.render('guias', {
+    res.render('guides', {
       arrayGuiasDB: arrayGuiasDB,
     });
   } catch (error) {

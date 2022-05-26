@@ -6,7 +6,7 @@
                 <br>
                 <br>
                 <br>
-                <a class="btn btn-success btn-block my-4" href="/tienda/crearItem">Crear nuevo item</a>
+                <a class="btn btn-success btn-block my-4" href="shop/create-item.ejs">Crear nuevo item</a>
 
                 <br>
                 <div class="card-group">
@@ -20,9 +20,9 @@
                             </div>
                             <div class="card-group">
                             <div class="card tarjetaGuias" style="width: 18rem;">
-                                <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="shop/<%= tienda.id %>">Editar/Eliminar</a>
                                 <div class="card-body">
-                                    <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
+                                    <img src="/public/<%= tienda.img %>" class="fotoResumenGuia"/>
                                     <h5 class="card-title"><%= tienda.nombre %></h5>
                                     <p class="card-text"><%= tienda.precio %>€</p>
                                     <button class="botonGaleria">&nbsp;</button>
@@ -30,9 +30,9 @@
                             </div>
                         <% } else{ %>
                             <div class="card tarjetaGuias" style="width: 18rem;">
-                                <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="shop/<%= tienda.id %>">Editar/Eliminar</a>
                                 <div class="card-body">
-                                    <img src="<%= tienda.img %>" class="fotoResumenGuia"/>
+                                    <img src="/public/<%= tienda.img %>" class="fotoResumenGuia"/>
                                     <h5 class="card-title"><%= tienda.nombre %></h5>
                                     <p class="card-text"><%= tienda.precio %>€</p>
                                     <button class="botonGaleria">&nbsp;</button>

@@ -1,29 +1,30 @@
 
-<div class="container mt-3">
-    <h3>Form Validation</h3>
-    <p>Try to submit the form.</p>
-      
-    <form action="/login" method="post">
-      <div class="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" class="avatar">
+<%- include("template/header", {tituloWeb: 'Panel de Administración' }) %>
+
+<main class="form-signin">
+    <form id="logear" method="POST" action="/login">
+      <img class="mb-4" src="../img/logo_rodrigo.png" alt="" width="200" >
+      <h1 class="h3 mb-3 fw-normal">Inicia sesión:</h1>
+  
+      <div class="form-floating">
+        <input type="text" required class="form-control" id="floatingInput" name="username" placeholder="Usuario">
+        <label for="floatingInput">Usuario:</label>
       </div>
-    
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-    
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-    
-        <button type="submit">Login</button>
+      <div class="form-floating">
+        <input type="password" required class="form-control" name="password" id="floatingPassword" placeholder="Contraseña">
+        <label for="floatingPassword">Contraseña:</label>
+      </div>
+  
+      <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
+          <a href="sign-up" class="link">¿No tienes cuenta? Regístrate.</a>
         </label>
       </div>
-    
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
+      <button class="btn btn-lg btn-primary botonlogin" type="submit">Iniciar sesión</button>
+      <label>
+        <a href="/" class="btn btn-lg btn-primary botonlogin text-white ms-3 link">Volver</a>
+      </label>
+      <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
     </form>
-  </div>
+  </main>
+<%- include("template/footer") %>
