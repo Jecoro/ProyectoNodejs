@@ -38,7 +38,7 @@ app.use('/', require('./routes/routes'));
 app.use('/guide', require('./routes/guide'));
 app.use('/gallery', require('./routes/gallery'));
 app.use('/shop', require('./routes/shop'));
-app.use('/login', require('./routes/login'));
+// app.use('/login', require('./routes/login'));
 app.use('/sign-up', require('./routes/sign-up'));
 
 
@@ -72,8 +72,11 @@ passport.use(new PassportLocal(async function (username, password, done) {
     // buscar(arrayusuarioDB);
 
     if (buscar(arrayusuarioDB, username, password)) {
+        console.log("jasjasjas");
         return done(null, { id: 1, name: "admin" });
-    } else {
+
+    } else {    
+        console.log("jesjesjes");
                 return done(null, false);
     }
 }));
@@ -86,15 +89,21 @@ passport.deserializeUser(function (id, done) {
     done(null, { id: 1, name: "admin" });
 })
 
-app.get("/", (req, res, next) => {
-    if (req.isAuthenticated()) return next();
-    res.redirect("/vistaLogin");
+/*app.get("/gallery",require('./routes/gallery'), (req, res, next) => {
+    console.log("uno");
+    if (req.isAuthenticated()){
+        console.log("a ver si este sale");
+        return next();
+    } 
+    console.log("dos");
+    res.redirect("/shop");
 }, (req, res) => {
-    res.render("index")
-})
+    console.log("tres");
+    res.render("gallery")
+})**/
 
-app.get('/vistaLogin', async (req, res) => {
-    res.render("vistaLogin");
+app.get('/login', async (req, res) => {
+    res.render("login");
 })
 
 // Esto es lo nuevo:
@@ -151,8 +160,9 @@ app.use((req, res) => {
 
 // Compruebo el usuario y contraseña para ver si el login es correcto
 function buscar(array, user, pass) {
-    // console.log(array[1].usuario)
+    
     for (let i = 0; i < array.length; i++) {
+        console.log(array[i])
         if (array[i].usuario === user && array[i].password === pass) {
             return true;
         }

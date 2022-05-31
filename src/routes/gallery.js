@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Galeria = require('../models/gallery');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res,next) => {
   try {
     const arrayGaleriaDB = await Galeria.find();
     console.log(arrayGaleriaDB);
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
   try {
     const galeriaDB = new Galeria(body);
     await galeriaDB.save();
-    res.redirect('/galeria');
+    res.redirect('/gallery');
   } catch (error) {
     console.log('error', error);
   }
@@ -35,13 +35,13 @@ router.get('/:id', async (req, res) => {
   try {
     const galeriaDB = await Galeria.findOne({ _id: id });
     console.log(galeriaDB);
-    res.render('detalleGaleria', {
+    res.render('gallery-detail', {
       galeria: galeriaDB,
       error: false,
     });
   } catch (error) {
     console.log('Se ha producido un error', error);
-    res.render('detalleGaleria', {
+    res.render('gallery-detail', {
       error: true,
       mensaje: 'No encontrado!',
     });
