@@ -34,12 +34,15 @@ app.use(express.static(__dirname + "/public"));
 
 
 // Set up application routing
-app.use('/', require('./routes/routes'));
+//app.use('/', require('./routes/routes'));
 app.use('/guide', require('./routes/guide'));
 app.use('/gallery', require('./routes/gallery'));
 app.use('/shop', require('./routes/shop'));
 // app.use('/login', require('./routes/login'));
 app.use('/sign-up', require('./routes/sign-up'));
+app.get('/contacto', (req, res) => {
+    res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
+})
 
 
 const passport = require("passport");
@@ -89,22 +92,17 @@ passport.deserializeUser(function (id, done) {
     done(null, { id: 1, name: "admin" });
 })
 
-/*app.get("/gallery",require('./routes/gallery'), (req, res, next) => {
-    console.log("uno");
-    if (req.isAuthenticated()){
-        console.log("a ver si este sale");
-        return next();
-    } 
-    console.log("dos");
-    res.redirect("/shop");
+app.get("/", (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/index_nolog");
 }, (req, res) => {
-    console.log("tres");
-    res.render("gallery")
-})**/
-
-app.get('/login', async (req, res) => {
-    res.render("login");
+    res.render("index")
 })
+
+app.get('/index_nolog', async (req, res) => {
+    res.render("index_nolog");
+})
+
 
 // Esto es lo nuevo:
 

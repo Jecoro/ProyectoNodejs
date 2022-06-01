@@ -8,11 +8,7 @@ const router = express.Router();
 // Importante que ya no usaremos el app.get(...), ahora
 //vamos a utilizar las rutas, por lo que deberemos poner:
 router.get('/', (req, res) => {
-    res.render("index", { titulo: "mi titulo dinámico" })
-})
-
-router.get('/inicio', (req, res) => {
-    res.render('inicio')
+    res.render("index_nolog", { titulo: "mi titulo dinámico" })
 })
 
 router.get('/contacto', (req, res) => {
