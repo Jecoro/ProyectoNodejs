@@ -34,12 +34,18 @@ app.use(express.static(__dirname + "/public"));
 
 
 // Set up application routing
-app.use('/', require('./routes/routes'));
+//app.use('/', require('./routes/routes'));
 app.use('/guide', require('./routes/guide'));
 app.use('/gallery', require('./routes/gallery'));
+app.use('/gallery_nolog', require('./routes/gallery_nolog'));
+app.use('/guides_nolog', require('./routes/guides_nolog'));
 app.use('/shop', require('./routes/shop'));
-app.use('/login', require('./routes/login'));
+app.use('/shop_nolog', require('./routes/shop_nolog'));
+// app.use('/login', require('./routes/login'));
 app.use('/sign-up', require('./routes/sign-up'));
+app.get('/contacto', (req, res) => {
+    res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
+})
 
 
 const passport = require("passport");
@@ -72,8 +78,11 @@ passport.use(new PassportLocal(async function (username, password, done) {
     // buscar(arrayusuarioDB);
 
     if (buscar(arrayusuarioDB, username, password)) {
+        console.log("jasjasjas");
         return done(null, { id: 1, name: "admin" });
-    } else {
+
+    } else {    
+        console.log("jesjesjes");
                 return done(null, false);
     }
 }));
@@ -88,14 +97,15 @@ passport.deserializeUser(function (id, done) {
 
 app.get("/", (req, res, next) => {
     if (req.isAuthenticated()) return next();
-    res.redirect("/vistaLogin");
+    res.redirect("/index_nolog");
 }, (req, res) => {
     res.render("index")
 })
 
-app.get('/vistaLogin', async (req, res) => {
-    res.render("vistaLogin");
+app.get('/index_nolog', async (req, res) => {
+    res.render("index_nolog");
 })
+
 
 // Esto es lo nuevo:
 
@@ -105,7 +115,9 @@ app.get('/login', async (req, res) => {
     req.logOut();
     res.render("login");
 })
-
+app.get('/gallery_nolog', async (req, res) => {
+    res.render("gallery_nolog");
+})
 app.get('/login/registrate', async (req, res) => {
     res.render("registrate");
 })
@@ -151,8 +163,9 @@ app.use((req, res) => {
 
 // Compruebo el usuario y contraseña para ver si el login es correcto
 function buscar(array, user, pass) {
-    // console.log(array[1].usuario)
+    
     for (let i = 0; i < array.length; i++) {
+        console.log(array[i])
         if (array[i].usuario === user && array[i].password === pass) {
             return true;
         }

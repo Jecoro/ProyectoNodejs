@@ -1,30 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const Galeria = require('../models/gallery');
+const Tienda = require('../models/shop');
 
-router.get('/', async (req, res,next) => {
+router.get('/', async (req, res) => {
   try {
-    const arrayGaleriaDB = await Galeria.find();
-    console.log(arrayGaleriaDB);
-    res.render('gallery', {
-      arrayGaleriaDB: arrayGaleriaDB,
+    const arrayTiendaDB = await Tienda.find();
+    console.log(arrayTiendaDB);
+    res.render('shop_nolog', {
+      arrayTiendaDB: arrayTiendaDB,
     });
   } catch (error) {
     console.error(error);
   }
 });
 
-router.get('/crearImagen', (req, res) => {
-  res.render('crearImagen');
+router.get('/crearItem', (req, res) => {
+  res.render('crearItem');
 });
 
 router.post('/', async (req, res) => {
   const body = req.body;
   console.log(body);
   try {
-    const galeriaDB = new Galeria(body);
-    await galeriaDB.save();
-    res.redirect('/gallery');
+    const tiendaDB = new Tienda(body);
+    await tiendaDB.save();
+    res.redirect('/tienda');
   } catch (error) {
     console.log('error', error);
   }
@@ -33,15 +33,15 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    const galeriaDB = await Galeria.findOne({ _id: id });
-    console.log(galeriaDB);
-    res.render('gallery-detail', {
-      galeria: galeriaDB,
+    const tiendaDB = await Tienda.findOne({ _id: id });
+    console.log(tiendaDB);
+    res.render('detalleItem', {
+      tienda: tiendaDB,
       error: false,
     });
   } catch (error) {
     console.log('Se ha producido un error', error);
-    res.render('gallery-detail', {
+    res.render('detalleItem', {
       error: true,
       mensaje: 'No encontrado!',
     });
@@ -52,9 +52,9 @@ router.delete('/:id', async (req, res) => {
   const id = req.params.id;
   console.log('id desde backend', id);
   try {
-    const galeriaDB = await Galeria.findByIdAndDelete({ _id: id });
-    console.log(galeriaDB);
-    if (!galeriaDB) {
+    const tiendaDB = await Tienda.findByIdAndDelete({ _id: id });
+    console.log(tiendaDB);
+    if (!tiendaDB) {
       res.json({
         estado: false,
         mensaje: 'No se puede eliminar',
@@ -78,8 +78,8 @@ router.put('/:id', async (req, res) => {
   console.log('body', body);
 
   try {
-    const galeriaDB = await Galeria.findByIdAndUpdate(id, body, { useFindAndModify: false });
-    console.log(galeriaDB);
+    const tiendaDB = await Tienda.findByIdAndUpdate(id, body, { useFindAndModify: false });
+    console.log(tiendaDB);
     res.json({
       estado: true,
       mensaje: 'Editado',

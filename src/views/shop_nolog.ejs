@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Utily3dPrints</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" aria-current="page" href="/">Utily3dPrints</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="gallery_nolog">Galeria</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="guides_nolog">Guias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop_nolog">Tienda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../login">Log-In</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
+    </header>
+
+    <div class="row cuerpo_principal">
+        <div class="col "></div>
+            <div class="col-8 container">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="card-group">
+                <% if (arrayTiendaDB.length> 0) { %>
+
+                    <% var test=0; %>
+                    <% arrayTiendaDB.forEach(tienda => { %>
+                        <% console.log(test) %>
+                        <% if(test>=4){ %>
+                            <% test=0;%>
+                            </div>
+                            <div class="card-group">
+                            <div class="card tarjetaGuias" style="width: 18rem;">
+        
+                                <div class="card-body">
+                                    <img src="/public/<%= tienda.img %>" class="fotoResumenGuia"/>
+                                    <h5 class="card-title"><%= tienda.nombre %></h5>
+                                    <p class="card-text"><%= tienda.precio %>€</p>
+                                    <button class="botonGaleria">&nbsp;</button>
+                                </div>
+                            </div>
+                        <% } else{ %>
+                            <div class="card tarjetaGuias" style="width: 18rem;">
+                 
+                                <div class="card-body">
+                                    <img src="/public/<%= tienda.img %>" class="fotoResumenGuia"/>
+                                    <h5 class="card-title"><%= tienda.nombre %></h5>
+                                    <p class="card-text"><%= tienda.precio %>€</p>
+                                    <button class="botonGaleria">&nbsp;</button>
+                                </div>
+                            </div>
+                        <% } %>
+                        <% test++;%>
+                    <% }) %>
+                <% } %>
+                </div>
+                </div>
+                <div class="col carrito_compra ">
+                    <br>
+                    <br>
+                    <br>
+                    <table id="carrito">
+                        <tr>
+                            <th colspan="3">Cesta:</th>
+                        </tr>
+                        <tr id="estructuraCarrito">
+                            <td id="nombre">Articulo</td>
+                            <td>Cantidad</td>
+                            <td>Precio</td>
+                        </tr>
+                        <tbody id="cuerpoCarrito">
+
+                        </tbody>
+                        <tr>
+                            <th>Total:</th>
+                            <th id="totalCompra" class="totalCompra"></th>
+                        </tr>
+                    </table>
+                    <button class="comprar"  onclick="comprar()">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include("template/footer") %>
+
+
+    <script>
+        let carrito = [];
+        document.addEventListener('DOMContentLoaded',()=>{
+
+        var total=0;
+        document.querySelectorAll('.botonGaleria').forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+                let Articulo={
+                    nombre:'',
+                    precio:0,
+                    cantidad:1
+            }
+
+                console.log("hola");
+                let nombre=e.target.parentNode.querySelector(".card-title").innerHTML;
+                let precio=e.target.parentNode.querySelector(".card-text").innerHTML;
+                Articulo.nombre=nombre;
+                Articulo.precio=precio;
+                if(!existeArticulo(nombre)){
+                    carrito.push(Articulo);
+                }
+
+                pintarCarrito();
+            });
+        });
+
+        function pintarCarrito(){
+            let contenedor=document.getElementById("cuerpoCarrito");
+            contenedor.innerHTML='';
+            for(let i=0;i<carrito.length;i++){
+                let fila=document.createElement("tr");
+                let celdas=`<td>${carrito[i].nombre}</td><td>${carrito[i].cantidad}</td><td>${carrito[i].precio}</td>`;
+                fila.innerHTML=celdas;
+                contenedor.appendChild(fila);
+                total=total+parseInt(carrito[i].precio);
+                document.getElementById("totalCompra").innerHTML=total+" €";
+            }
+            localStorage.setItem('carrito',JSON.stringify(carrito));
+        }
+
+
+        function existeArticulo(nombre){
+            for(let i=0;i<carrito.length;i++){
+                console.log(carrito[i].nombre===nombre);
+                console.log(carrito[i].nombre);
+                console.log(nombre);
+                console.log(carrito);
+                if(carrito[i].nombre===nombre){
+                    carrito[i].cantidad++;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        document.querySelectorAll('.comprar').forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+                location.reload();
+                alert("Compra Realizada");
+            });
+        });
+
+
+    });
+    </script>
+
+
+
+

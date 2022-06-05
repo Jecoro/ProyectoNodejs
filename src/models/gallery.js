@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const galeriaSchema = new Schema({
+    id: String,
     nombre: String,
     material: String,
     tiempo: String,
