@@ -37,7 +37,10 @@ app.use(express.static(__dirname + "/public"));
 //app.use('/', require('./routes/routes'));
 app.use('/guide', require('./routes/guide'));
 app.use('/gallery', require('./routes/gallery'));
+app.use('/gallery_nolog', require('./routes/gallery_nolog'));
+app.use('/guides_nolog', require('./routes/guides_nolog'));
 app.use('/shop', require('./routes/shop'));
+app.use('/shop_nolog', require('./routes/shop_nolog'));
 // app.use('/login', require('./routes/login'));
 app.use('/sign-up', require('./routes/sign-up'));
 app.get('/contacto', (req, res) => {
@@ -112,7 +115,9 @@ app.get('/login', async (req, res) => {
     req.logOut();
     res.render("login");
 })
-
+app.get('/gallery_nolog', async (req, res) => {
+    res.render("gallery_nolog");
+})
 app.get('/login/registrate', async (req, res) => {
     res.render("registrate");
 })

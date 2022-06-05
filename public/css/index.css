@@ -36,39 +36,42 @@ body {
     position:absolute;
     bottom:0;
     height: 200px;
-    width: 100%;
+    width: 22%;
     background-image: url("../img/imagen1pequeña.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 10%;
     margin-top: 100px;
+    margin-bottom: 30px;
   }
   .div2{
     position:absolute;
     bottom:0;
     height: 200px;
-    width: 100%;
+    width: 22%;
     background-image: url("../img/img2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 10%;
     margin-top: 100px;
+    margin-bottom: 30px;
   }
   .div3{
     position:absolute;
     bottom:0;
+    width: 22%;
     height: 200px;
-    width: 100%;
     background-image: url("../img/img4.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 10%;
-    margin-top: 100px;
+    margin-bottom: 30px;
   }
   .prueba{
     background-color: #00B7FF;
   }
   .div4{
+    
     background-image: url("../img/img1.jpg");
     height: 100%;
     width: 100%;
