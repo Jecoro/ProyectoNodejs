@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     const arrayTiendaDB = await Tienda.find();
     console.log(arrayTiendaDB);
-    res.render('shop', {
+    res.render('shop_nolog', {
       arrayTiendaDB: arrayTiendaDB,
     });
   } catch (error) {

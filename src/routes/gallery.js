@@ -41,7 +41,11 @@ router.get('/:id', async (req, res) => {
     });
   } catch (error) {
     console.log('Se ha producido un error', error);
+<<<<<<< HEAD
     res.render('shop', {
+=======
+    res.render('gallery-detail', {
+>>>>>>> 1cb1d8381cc3f31c626eb99a3af28963fd0439ec
       error: true,
       mensaje: 'No encontrado!',
     });

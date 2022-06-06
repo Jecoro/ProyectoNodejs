@@ -6,7 +6,7 @@ router.get('/', async (req, res,next) => {
   try {
     const arrayGaleriaDB = await Galeria.find();
     console.log(arrayGaleriaDB);
-    res.render('gallery', {
+    res.render('gallery_nolog', {
       arrayGaleriaDB: arrayGaleriaDB,
     });
   } catch (error) {
@@ -14,17 +14,18 @@ router.get('/', async (req, res,next) => {
   }
 });
 
+<<<<<<< HEAD
 router.get('/create-image', (req, res) => {
   res.render('create-image');
 });
-
+>>>>>>> 1cb1d8381cc3f31c626eb99a3af28963fd0439ec
 router.post('/', async (req, res) => {
   const body = req.body;
-  console.log(body);
-  try {
     const galeriaDB = new Galeria(body);
-    await galeriaDB.save();
     res.redirect('/gallery');
+=======
+    res.redirect('/gallery_nolog');
+>>>>>>> 1cb1d8381cc3f31c626eb99a3af28963fd0439ec
   } catch (error) {
     console.log('error', error);
   }

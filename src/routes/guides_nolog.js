@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const arrayGuiasDB = await Guias.find();
     console.log(arrayGuiasDB);
-    res.render('guides', {
+    res.render('guides_nolog', {
       arrayGuiasDB: arrayGuiasDB,
     });
   } catch (error) {
@@ -93,7 +93,10 @@ router.put('/:id', async (req, res) => {
   try {
     const guiasDB = await Guias.findByIdAndUpdate(id, body, { useFindAndModify: false });
     console.log(guiasDB);
+<<<<<<< HEAD
  
+=======
+>>>>>>> 1cb1d8381cc3f31c626eb99a3af28963fd0439ec
     res.json({
       estado: true,
       mensaje: 'Editado',
