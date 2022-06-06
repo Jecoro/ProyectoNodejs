@@ -1,11 +1,9 @@
 <%- include("template/header", {tituloWeb: 'Detalles de las tienda' }) %>
 
-<!-- <a class="btn btn-warning btn-sm" href="tienda/<%= tienda.id %>">Editar/Eliminar</a> -->
-
 <div class="container">
   <h1>Detalles del Item</h1>
   <% if (error) { %> <%= mensaje %>
-  <a href="/tienda" class="btn btn-dark btn-block my-2"> Volver </a>
+  <a href="/shop" class="btn btn-dark btn-block my-2"> Volver </a>
   <% } %> <% if (!error) { %>
   <form id="editar" data-id="<%= tienda.id %>">
     <input
@@ -37,13 +35,13 @@
     console.log(btnEliminar.dataset.id);
     try {
       // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
-      const data = await fetch(`/tienda/${btnEliminar.dataset.id}`, {
+      const data = await fetch(`/shop/${btnEliminar.dataset.id}`, {
         method: 'delete',
       });
       const res = await data.json();
       console.log(res);
       if (res.estado) {
-        window.location.href = '/tienda';
+        window.location.href = '/shop';
       } else {
         console.log(res);
       }
@@ -57,24 +55,23 @@
     e.preventDefault();
     // Alternativa #1 (capturar input)
     const nombre = formEditar.elements['nombre'].value;
-    const tipo = formEditar.elements['tipo'].value;
-    const descripcion = formEditar.elements['descripcion'].value;
+    const precio = formEditar.elements['precio'].value;
     // Alternativa #2 (capturar input)
     //const descripcion = document.querySelector('#descripcionInput').value
     const id = formEditar.dataset.id;
 
-    const data = await fetch(`/tienda/${id}`, {
+    const data = await fetch(`/shop/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nombre, tipo, descripcion }),
+      body: JSON.stringify({ nombre, precio }),
     });
 
     const res = await data.json();
 
     if (res.estado) {
-      window.location.href = '/tienda';
+      window.location.href = '/shop';
     } else {
       console.log(res);
     }

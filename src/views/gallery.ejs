@@ -16,7 +16,7 @@
   /></div>
   <div class="card-group">
     <div class="card tarjetaGuias" style="width: 18rem">
-      <a class="btn btn-warning btn-sm" href="galeria/<%= Galeria.id %>">Editar/Eliminar</a>
+      <a class="btn btn-warning btn-sm" href="gallery/<%= Galeria.id %>">Editar/Eliminar</a>
       <div class="card-body">
         <h5 class="card-title"><%= Galeria.nombre %></h5>
         <img
@@ -32,7 +32,7 @@
     </div>
     <% } else{ %>
     <div class="card tarjetaGuias" style="width: 18rem">
-      <a class="btn btn-warning btn-sm" href="galeria/<%= Galeria.id %>">Editar/Eliminar</a>
+      <a class="btn btn-warning btn-sm" href="gallery/<%= Galeria.id %>">Editar/Eliminar</a>
       <div class="card-body">
         <h5 class="card-title"><%= Galeria.nombre %></h5>
         <img
@@ -53,7 +53,7 @@
   ocultar();
 
   function myFunction($img) {
-    document.getElementById('lienzo').src = $img;
+    document.getElementById('lienzo').src = '/public/'+$img;
     $('.marco').fadeIn();
   }
 

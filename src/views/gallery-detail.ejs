@@ -1,8 +1,8 @@
 <%- include("template/header", {tituloWeb: 'Detalles de las guias' }) %>
 <div class="container">
-  <h1>Detalles de la Guia</h1>
+  <h1>Detalles de la Imagen</h1>
   <% if (error) { %> <%= mensaje %>
-  <a href="/galeria" class="btn btn-dark btn-block my-2"> Volver </a>
+  <a href="/gallery" class="btn btn-dark btn-block my-2"> Volver </a>
   <% } %> <% if (!error) { %>
   <form id="editar" data-id="<%= galeria.id %>">
     <input
@@ -14,14 +14,14 @@
     />
     <input
       type="text"
-      value="<%= galeria.tipo %>"
+      value="<%= galeria.material %>"
       class="form-control my-2"
       name="tipo"
       id="tipoInput"
     />
     <input
       type="text"
-      value="<%= galeria.descripcion %>"
+      value="<%= galeria.autor %>"
       class="form-control my-2"
       name="descripcion"
       id="descripcionInput"
@@ -39,13 +39,13 @@
     console.log(btnEliminar.dataset.id);
     try {
       // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
-      const data = await fetch(`/galeria/${btnEliminar.dataset.id}`, {
+      const data = await fetch(`/gallery/${btnEliminar.dataset.id}`, {
         method: 'delete',
       });
       const res = await data.json();
       console.log(res);
       if (res.estado) {
-        window.location.href = '/galeria';
+        window.location.href = '/gallery';
       } else {
         console.log(res);
       }
@@ -60,24 +60,24 @@
     e.preventDefault();
     // Alternativa #1 (capturar input)
     const nombre = formEditar.elements['nombre'].value;
-    const tipo = formEditar.elements['tipo'].value;
-    const descripcion = formEditar.elements['descripcion'].value;
+    const material = formEditar.elements['tipo'].value;
+    const autor = formEditar.elements['descripcion'].value;
     // Alternativa #2 (capturar input)
     //const descripcion = document.querySelector('#descripcionInput').value
     const id = formEditar.dataset.id;
 
-    const data = await fetch(`/galeria/${id}`, {
+    const data = await fetch(`/gallery/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nombre, tipo, descripcion }),
+      body: JSON.stringify({ nombre, material, autor }),
     });
 
     const res = await data.json();
 
     if (res.estado) {
-      window.location.href = '/galeria';
+      window.location.href = '/gallery';
     } else {
       console.log(res);
     }

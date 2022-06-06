@@ -4,7 +4,7 @@
   <br />
   <br />
   <br />
-  <a class="btn btn-success btn-block my-4" href="/guias/crear">Crear nueva guia</a>
+  <a class="btn btn-success btn-block my-4" href="/create">Crear nueva guia</a>
   Compartimos tutoriales sobre:
   <br />
   <div id="contenido" class="card-group">
@@ -17,7 +17,7 @@
       style="width: 18rem"
       onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')"
     >
-      <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
+      <a class="btn btn-warning btn-sm" href="guides/<%= guias.id %>">Editar/Eliminar</a>
       <div class="card-body">
         <h5 class="card-title"><%= guias.nombre %></h5>
         <img src="/public/<%= guias.img %>" class="fotoResumenGuia" />
@@ -30,7 +30,7 @@
       style="width: 18rem"
       onclick="myFunction('<%= guias.nombre %>','<%= guias.texto %>','<%= guias.video %>')"
     >
-      <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a>
+      <a class="btn btn-warning btn-sm" href="guides/<%= guias.id %>">Editar/Eliminar</a>
       <div class="card-body">
         <h5 class="card-title"><%= guias.nombre %></h5>
         <img src="/public/<%= guias.img %>" class="fotoResumenGuia" />

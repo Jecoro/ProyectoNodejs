@@ -1,11 +1,9 @@
 <%- include("template/header", {tituloWeb: 'Detalles de las guias' }) %>
 
-<!-- <a class="btn btn-warning btn-sm" href="guias/<%= guias.id %>">Editar/Eliminar</a> -->
-
 <div class="container">
   <h1>Detalles de la Guia</h1>
-  <% if (error) { %> <%= mensaje %>
-  <a href="/guias" class="btn btn-dark btn-block my-2"> Volver </a>
+   <% if (error) { %> <%= mensaje %>
+  <a href="/guide" class="btn btn-dark btn-block my-2"> Volver </a>
   <% } %> <% if (!error) { %>
   <form id="editar" data-id="<%= guias.id %>">
     <input
@@ -51,13 +49,13 @@
     console.log(btnEliminar.dataset.id);
     try {
       // https://developer.mozilla.org/es/docs/Web/API/HTMLElement/dataset
-      const data = await fetch(`/guias/${btnEliminar.dataset.id}`, {
+      const data = await fetch(`/guide/${btnEliminar.dataset.id}`, {
         method: 'delete',
       });
       const res = await data.json();
       console.log(res);
       if (res.estado) {
-        window.location.href = '/guias';
+        window.location.href = '/guide';
       } else {
         console.log(res);
       }
@@ -71,24 +69,25 @@
     e.preventDefault();
     // Alternativa #1 (capturar input)
     const nombre = formEditar.elements['nombre'].value;
-    const tipo = formEditar.elements['tipo'].value;
-    const descripcion = formEditar.elements['descripcion'].value;
+    const autor = formEditar.elements['autor'].value;
+    const impresora = formEditar.elements['impresora'].value;
+    const texto = formEditar.elements['texto'].value;
     // Alternativa #2 (capturar input)
     //const descripcion = document.querySelector('#descripcionInput').value
     const id = formEditar.dataset.id;
 
-    const data = await fetch(`/guias/${id}`, {
+    const data = await fetch(`/guide/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nombre, tipo, descripcion }),
+      body: JSON.stringify({ nombre, impresora, autor,texto }),
     });
 
     const res = await data.json();
 
     if (res.estado) {
-      window.location.href = '/guias';
+      window.location.href = '/guide';
     } else {
       console.log(res);
     }
