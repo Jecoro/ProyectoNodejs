@@ -46,15 +46,12 @@ app.use('/sign-up', require('./routes/sign-up'));
 app.get('/contacto', (req, res) => {
     res.render("contacto", { tituloContacto: "Estamos en contacto de manera dinámica!!" })
 })
-<<<<<<< HEAD
-app.get('/guide/create', (req, res) => {
+app.get('/create', (req, res) => {
     res.render("create")
 })
 app.get('/gallery/create-image', (req, res) => {
     res.render("create-image")
 })
-=======
->>>>>>> 1cb1d8381cc3f31c626eb99a3af28963fd0439ec
 
 app.get('/create-item', (req, res) => {
     res.render('create-item');
