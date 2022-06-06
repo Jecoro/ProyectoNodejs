@@ -49,7 +49,7 @@ app.get('/contacto', (req, res) => {
 app.get('/create', (req, res) => {
     res.render("create")
 })
-app.get('/gallery/create-image', (req, res) => {
+app.get('/create-image', (req, res) => {
     res.render("create-image")
 })
 
